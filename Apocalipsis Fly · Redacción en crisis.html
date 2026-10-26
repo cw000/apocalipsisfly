@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apocalipsis Fly · Redacción en crisis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Caveat:wght@600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1ede4;--card:#fffdf7;--ink:#16130f;--mute:#6b6459;--acc:#b3261e;--line:#d9d2c2;--tape:#e6dcb8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0d0b;--card:#1a1814;--ink:#f1ede4;--mute:#a49d8f;--acc:#ff5a4d;--line:#3a352c;--tape:#4a432d}}
+:root[data-theme="dark"]{--bg:#0e0d0b;--card:#1a1814;--ink:#f1ede4;--mute:#a49d8f;--acc:#ff5a4d;--line:#3a352c;--tape:#4a432d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Lora,Georgia,serif;line-height:1.55;
+background-image:radial-gradient(var(--line) 1px,transparent 1.5px);background-size:38px 38px}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0}
+.hand{font-family:Caveat,'Comic Sans MS',cursive}
+header{padding:48px 20px 24px;text-align:center;position:relative;overflow:hidden}
+header .date{font-family:Caveat,cursive;font-size:1.6rem;color:var(--acc)}
+header h1{font-size:clamp(2.4rem,8vw,4.6rem);line-height:1}
+header p{max-width:640px;margin:14px auto 0;color:var(--mute)}
+.fly{position:absolute;font-size:1.6rem;animation:buzz 9s linear infinite;opacity:.8}
+@keyframes buzz{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(60px,30px) rotate(40deg)}50%{transform:translate(20px,-20px) rotate(-30deg)}75%{transform:translate(-50px,25px) rotate(20deg)}100%{transform:translate(0,0) rotate(0)}}
+@media (prefers-reduced-motion:reduce){.fly{animation:none}}
+nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:8px 12px 20px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{font:600 .95rem Lora,serif;border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer}
+nav button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+main{max-width:980px;margin:0 auto;padding:0 16px 60px}
+section{display:none}section.on{display:block;animation:in .35s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.clip{background:var(--card);border:1px solid var(--line);padding:24px;position:relative;margin:0 0 26px;box-shadow:4px 6px 0 rgba(0,0,0,.12)}
+.clip::before{content:"";position:absolute;top:-12px;left:30px;width:90px;height:24px;background:var(--tape);opacity:.85;transform:rotate(-4deg)}
+.clip h2{font-size:1.7rem;margin-bottom:10px}
+.tag{display:inline-block;background:var(--ink);color:var(--bg);font:700 .75rem Lora;letter-spacing:.12em;padding:3px 10px;text-transform:uppercase;margin-bottom:10px}
+blockquote{margin:0;padding:12px 18px;border-left:5px solid var(--acc);background:rgba(179,38,30,.07)}
+.req{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.req label{display:flex;gap:12px;align-items:flex-start;border:2px dashed var(--line);padding:14px;cursor:pointer;background:var(--card)}
+.req input{width:22px;height:22px;accent-color:var(--acc);flex:none;margin-top:3px}
+.req label:has(input:checked){border-style:solid;border-color:var(--acc)}
+.req b{display:block}
+.bar{height:14px;border:2px solid var(--ink);border-radius:9px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width .4s}
+/* phone */
+.wrap{display:grid;gap:26px;grid-template-columns:minmax(0,380px) 1fr;align-items:start}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}}
+.phone{background:#fff;color:#111;border:10px solid #111;border-radius:34px;overflow:hidden;max-width:380px;margin:0 auto;width:100%;font-family:system-ui,Arial,sans-serif;box-shadow:6px 8px 0 rgba(0,0,0,.2)}
+.ig-top{padding:14px 16px 6px;display:flex;gap:16px;align-items:center}
+.avatar{width:78px;height:78px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-size:2.2rem;border:3px solid #fff;outline:3px solid #c13584;flex:none}
+.stats{display:flex;gap:14px;text-align:center;font-size:.8rem;flex:1;justify-content:space-around}
+.stats b{display:block;font-size:1.05rem}
+.bio{padding:2px 16px 10px;font-size:.85rem;line-height:1.35}
+.bio b{display:block}.bio a{color:#00376b}
+.btns{display:flex;gap:6px;padding:0 16px 12px}
+.btns button{flex:1;border:0;background:#efefef;font-weight:600;padding:7px;border-radius:8px;cursor:pointer}
+.btns button.f{background:#0095f6;color:#fff}
+.hl{display:flex;gap:14px;padding:4px 16px 12px;overflow-x:auto}
+.hl div{text-align:center;font-size:.68rem;flex:none}
+.hl span{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:2px solid #ddd;background:#f6f6f6;font-size:1.5rem;margin-bottom:3px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-top:1px solid #ddd}
+.grid button{aspect-ratio:1;border:0;padding:0;cursor:pointer;position:relative;overflow:hidden}
+.grid .dash{background:repeating-linear-gradient(45deg,#f4f4f4,#f4f4f4 8px,#ebebeb 8px,#ebebeb 16px);color:#777;font-size:.7rem;display:grid;place-items:center;text-align:center;padding:6px}
+/* placas */
+.plate{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:6%;text-align:left;position:relative;font-family:'Playfair Display',Georgia,serif}
+.p1{background:#f4efe2;color:#111}
+.p1 small{background:#111;color:#fff;font:700 .6em system-ui;padding:2px 6px;letter-spacing:.1em;align-self:flex-start;margin-bottom:6px}
+.p1 strong{font-size:1.15em;line-height:1.05;font-weight:900}
+.p2{background:radial-gradient(circle at 50% 38%,#2b4b55 0,#0d1a1f 75%);color:#fff;align-items:center;text-align:center}
+.p2 small{font:700 .6em system-ui;letter-spacing:.14em;color:#ffcf5a;margin-bottom:6px}
+.p2 strong{font-size:1.05em;line-height:1.1;font-weight:900}
+.bub{width:34%;aspect-ratio:1;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:1.6em;margin-bottom:6px}
+.mini{font-size:.62rem}.big{font-size:1rem}
+.plate .f1{position:absolute;right:8%;bottom:8%;font-size:1.8em}
+/* modal */
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,440px);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.post{background:#fff;color:#111;font-family:system-ui,Arial,sans-serif;border-radius:12px;overflow:hidden;font-size:.88rem}
+.ph{display:flex;align-items:center;gap:10px;padding:10px 12px;font-weight:600}
+.ph .avatar{width:34px;height:34px;font-size:1rem;outline-width:2px;border-width:2px}
+.ph .x{margin-left:auto;border:0;background:none;font-size:1.4rem;cursor:pointer}
+.pimg{aspect-ratio:1;font-size:min(3.6vw,15px)}
+.pimg .plate{font-size:min(4.6vw,19px)}
+.acts{padding:8px 12px 0;display:flex;gap:14px;font-size:1.5rem}
+.acts button{border:0;background:none;cursor:pointer;font-size:1.5rem;padding:0}
+.acts .liked{color:#e0245e}
+.cap{padding:4px 12px 12px;line-height:1.4}
+.cap .ht{color:#00376b}
+.cm{padding:0 12px 12px;color:#444;font-size:.82rem}
+.note{font-size:.85rem;color:var(--mute);margin-top:10px}
+/* timeline */
+.tl{border-left:4px solid var(--ink);margin-left:10px;padding-left:20px}
+.tl details{background:var(--card);border:1px solid var(--line);margin:0 0 12px;padding:10px 14px;position:relative}
+.tl details::before{content:"";position:absolute;left:-31px;top:16px;width:14px;height:14px;border-radius:50%;background:var(--acc);border:3px solid var(--bg)}
+.tl summary{cursor:pointer;font-weight:600}
+.tl summary span{font-family:Caveat,cursive;font-size:1.35rem;color:var(--acc);margin-right:8px}
+.tl p{margin:8px 0 0;color:var(--mute)}
+.stage{display:inline-block;font:700 .7rem Lora;background:var(--acc);color:#fff;padding:2px 8px;margin-top:8px;letter-spacing:.08em}
+#swarm{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}
+.sf{position:absolute;left:0;top:0;will-change:transform;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.35));user-select:none}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:0 16px 40px}
+</style>
+</head>
+<body>
+<div id="swarm" aria-hidden="true"></div>
+<header>
+<span class="fly" style="left:8%;top:30%">🪰</span><span class="fly" style="right:10%;top:55%;animation-delay:-4s">🪰</span><span class="fly" style="right:30%;top:12%;animation-delay:-7s">🪰</span>
+<div class="date">Marzo de 2021 · Alerta en la región</div>
+<h1>Apocalipsis Fly</h1>
+<p>Clave de lectura sobre la novela de <b>Roxana D’Auro</b>. Hoy ustedes son el equipo periodístico: la invasión ya no se puede ocultar y las redes son el único medio rápido para avisar a la gente.</p>
+</header>
+
+<nav role="tablist">
+<button role="tab" aria-selected="true" data-t="consigna">📰 La consigna</button>
+<button role="tab" aria-selected="false" data-t="etapas">🕰️ Etapas de la invasión</button>
+<button role="tab" aria-selected="false" data-t="ejemplo">📱 Perfil de ejemplo</button>
+<button role="tab" aria-selected="false" data-t="lista">✅ Mi checklist</button>
+</nav>
+
+<main>
+<section id="consigna" class="on">
+<div class="clip"><span class="tag">Clave de lectura</span>
+<h2>Un mundo que se encierra en burbujas</h2>
+<p><i>Apocalipsis Fly</i> nos propone un mundo distópico donde una invasión de moscas desarticula por completo la vida cotidiana, obligando a la sociedad a refugiarse en el aislamiento y a transformar sus hábitos. A través de una voz narrativa íntima que registra el colapso progresivo, el texto expone la fragilidad de la civilización humana frente a la naturaleza.</p>
+<p class="note">Pista: el libro está escrito como un diario con fechas (marzo de 2021 → enero de 2023). Cada fecha es una etapa de la invasión. ¡Usen esas etapas para sus posteos!</p></div>
+
+<div class="clip"><span class="tag">Consigna de producción · en parejas</span>
+<h2>Su misión</h2>
+<blockquote>Imaginen que son el equipo periodístico de un portal de noticias local en medio de la crisis de Apocalipsis Fly. La invasión de moscas ya no se puede ocultar y las redes sociales son el único medio rápido para informar a la población sobre lo que está pasando en las calles.</blockquote>
+<p><b>Creen el perfil de Instagram de un portal de noticias ficticio</b> y diseñen <b>al menos dos publicaciones</b> que muestren cómo avanza la invasión en distintas etapas de la novela.</p></div>
+
+<div class="clip"><span class="tag">Requisitos</span><h2>¿Qué tiene que tener su trabajo?</h2>
+<div class="req">
+<div class="card"><b>👤 Perfil del medio</b>Un <b>nombre de usuario</b> para la cuenta y una <b>breve biografía</b> del perfil.</div>
+<div class="card"><b>🟢 Publicación 1 · Comienzo</b>Una placa o posteo que refleje el <b>comienzo de la invasión</b>. Debe incluir <b>imagen/diseño, descripción y hashtags</b>.</div>
+<div class="card"><b>🔴 Publicación 2 · Momento avanzado</b>Una segunda placa de una etapa posterior (por ejemplo: el uso obligatorio de los <b>trajes burbuja protectores</b> de los niños). También con <b>imagen, texto y hashtags</b>.</div>
+</div>
+<p class="note">💡 Pueden usar IAs para recrear las imágenes de las publicaciones. Vean el perfil de ejemplo para inspirarse (¡pero no lo copien!).</p></div>
+</section>
+
+<section id="etapas">
+<div class="clip"><span class="tag">Línea de tiempo</span><h2>Así avanza la invasión en el libro</h2>
+<p>Toquen cada fecha del diario. Elijan etapas distintas para sus dos publicaciones.</p>
+<div class="tl">
+<details><summary><span>Marzo 2021</span>El diario avisa: “La invasión de moscas afecta a nuestra ciudad”</summary><p>Un funcionario de control de plagas dice que es estacional y durará unas dos semanas. La narradora, que nunca confió en las moscas, empieza a poner mosquiteros y a cambiar su casa.</p><span class="stage">COMIENZO</span></details>
+<details><summary><span>Abril – Mayo 2021</span>Cierre del criadero y vacas enloquecidas</summary><p>Se clausura el criadero, los comercios sufren, las moscas se meten por orejas y narices del ganado y baja la producción de leche. Aparecen los palos con tiritas de cuero para espantarlas.</p><span class="stage">COMIENZO</span></details>
+<details><summary><span>Julio 2021</span>La plaza y la sobrina Estelita</summary><p>Los chicos se rascan sin parar. La moscas ya no parasitan solo al ganado: una larva sale de la piel de una nena. Todo el cuerpo humano está en riesgo.</p><span class="stage">ESCALADA</span></details>
+<details><summary><span>Octubre 2021</span>Nacen los “protoburbujas”</summary><p>Los chicos pasan cuatro meses encerrados esperando los primeros modelos de trajes burbuja. Se recuerda la película del niño de la burbuja de plástico. La invasión llega al mundo entero.</p><span class="stage">TRAJES BURBUJA</span></details>
+<details><summary><span>Enero – Febrero 2022</span>Ruido, agresividad y pérdidas</summary><p>Las ciudades son cada vez más ruidosas, la gente se pelea y los hospitales cambian sus rituales. Muere el padre de la narradora. La Cumbre Mundial no llega a ningún puerto.</p><span class="stage">COLAPSO SOCIAL</span></details>
+<details><summary><span>Mayo – Junio 2022</span>Cordones sanitarios y desigualdad</summary><p>“Nosotros” y “los otros”: villas y barrios pobres quedan aislados tras vallados. Los bancos ofrecen créditos para comprar burbujas. Se planea una Segunda Cumbre Mundial.</p><span class="stage">COLAPSO SOCIAL</span></details>
+<details><summary><span>Septiembre 2022</span>Se inaugura “El Sistema”</summary><p>Burbujas que se unen como celdillas de un panal gigante. Se puede caminar sin espantarlas y hacer picnics… pero todo queda bajo un manto transparente.</p><span class="stage">AISLAMIENTO TOTAL</span></details>
+<details><summary><span>Enero 2023</span>La oscuridad</summary><p>Las moscas oscurecen continentes con sus manchones. Las aguas se enturbian y se llega a la oscuridad absoluta. La narradora escribe sus últimas líneas.</p><span class="stage">FINAL</span></details>
+</div></div>
+</section>
+
+<section id="ejemplo">
+<div class="wrap">
+<div>
+<div class="phone">
+<div class="ig-top"><div class="avatar">🪰</div>
+<div class="stats"><div><b>2</b>posts</div><div><b>14,3 k</b>seguidores</div><div><b>31</b>seguidos</div></div></div>
+<div class="bio"><b>La Plata Alerta 24h</b>Medio de noticias local 📰<br>Informamos lo que pasa en la calle. Mosquitero puesto, ojo abierto 🪰<br>📍 La Plata · <a>#ApocalipsisFly</a></div>
+<div class="btns"><button class="f" id="seg">Seguir</button><button>Mensaje</button></div>
+<div class="hl"><div><span>🐄</span>Campo</div><div><span>🫧</span>Burbujas</div><div><span>🏥</span>Hospital</div><div><span>📻</span>Radio</div></div>
+<div class="grid">
+<button data-p="1" aria-label="Abrir publicación 1"><div class="plate p1"><small>URGENTE</small><strong>LA INVASIÓN DE MOSCAS AFECTA A LA CIUDAD</strong><span class="f1">🪰</span></div></button>
+<button data-p="2" aria-label="Abrir publicación 2"><div class="plate p2"><div class="bub">🧒</div><small>YA ES OBLIGATORIO</small><strong>TRAJE BURBUJA EN ESCUELAS</strong></div></button>
+<button class="dash" disabled>Tu próxima publicación</button>
+</div></div>
+<p class="note" style="text-align:center">👆 Tocá las publicaciones para verlas completas.</p>
+</div>
+<div class="clip"><span class="tag">Perfil de ejemplo</span><h2>¿Qué miramos acá?</h2>
+<p><b>Usuario:</b> <code>@laplataalerta24</code> — corto, creíble y relacionado con el lugar de la historia.</p>
+<p><b>Biografía:</b> dice qué tipo de medio es, a quién informa y tiene un toque de la época de crisis.</p>
+<p><b>Publicación 1:</b> inspirada en la nota del diario de <i>marzo de 2021</i>. Tono tranquilizador, todavía “estacional”.</p>
+<p><b>Publicación 2:</b> etapa de los trajes burbuja. Tono más urgente y con reglas claras.</p>
+<p class="note">Fíjense cómo cambia el tono (de “no es nada grave” a “es obligatorio”) a medida que avanza la invasión. ¡Eso también cuenta una historia!</p></div>
+</div>
+</section>
+
+<section id="lista">
+<div class="clip"><span class="tag">Para el equipo</span><h2>Checklist de entrega</h2>
+<p>Tildá lo que ya tienen listo.</p>
+<div class="bar"><i id="fill"></i></div><div id="pct" class="hand" style="font-size:1.4rem">0 de 8 listo</div><br>
+<div class="req" id="chk">
+<label><input type="checkbox"><span><b>Nombre de usuario</b>Pensado para un portal local.</span></label>
+<label><input type="checkbox"><span><b>Biografía</b>Breve y con identidad de medio.</span></label>
+<label><input type="checkbox"><span><b>Post 1: imagen o diseño</b>Refleja el comienzo.</span></label>
+<label><input type="checkbox"><span><b>Post 1: descripción</b>Cuenta qué pasó en las calles.</span></label>
+<label><input type="checkbox"><span><b>Post 1: hashtags</b>Al menos tres.</span></label>
+<label><input type="checkbox"><span><b>Post 2: imagen o diseño</b>Etapa más avanzada.</span></label>
+<label><input type="checkbox"><span><b>Post 2: descripción</b>Tono acorde a la etapa.</span></label>
+<label><input type="checkbox"><span><b>Post 2: hashtags</b>Al menos tres.</span></label>
+</div>
+<p class="note" id="done" hidden>🎉 ¡Todo listo! Súbanlo al Padlet con sus nombres.</p></div>
+</section>
+</main>
+<footer>Actividad basada en <i>Apocalipsis Fly</i>, de Roxana D’Auro · Prácticas del lenguaje<br>Docentes: Eugenia García, Francisco Gómez Dacal, Martina González, Simón Reyna y Camila Soto</footer>
+
+<dialog id="dlg"><div class="post">
+<div class="ph"><div class="avatar">🪰</div><span>laplataalerta24</span><button class="x" id="cl" aria-label="Cerrar">×</button></div>
+<div class="pimg" id="pimg"></div>
+<div class="acts"><button id="lk" aria-label="Me gusta">🤍</button><span>💬</span><span>✈️</span></div>
+<div class="cap" id="cap"></div><div class="cm" id="cm"></div>
+</div></dialog>
+
+<script>
+const P={
+1:{img:'<div class="plate p1"><small>URGENTE · MARZO 2021</small><strong>LA INVASIÓN DE MOSCAS AFECTA A LA CIUDAD</strong><span class="mini">Se presume estacional. Podría durar dos semanas más.</span><span class="f1">🪰</span></div>',
+likes:812,cap:'<b>laplataalerta24</b> 🪰 <b>ALERTA EN LA REGIÓN.</b> Desde hace días hay más moscas de lo normal en la ciudad y la zona. Desde Control de Plagas aseguran que es un fenómeno estacional y que podría durar unas dos semanas más. Mientras tanto: tapá los alimentos, cerrá bien la basura y revisá los mosquiteros. <span class="ht">#ApocalipsisFly #InvasiónDeMoscas #LaPlata #AlertaLocal #Plagas</span>',cm:'<b>vecina_de_calle12</b> ¡Hoy el desayuno me lo arruinaron! 😩<br><b>don_julio_kiosco</b> Con la física y la química no alcanza…'},
+2:{img:'<div class="plate p2"><div class="bub">🧒</div><small>DESDE HOY · EXTRA</small><strong>TRAJE BURBUJA OBLIGATORIO PARA LOS CHICOS</strong><span class="mini">Escuelas y plazas: sin traje, no se ingresa.</span></div>',
+likes:3427,cap:'<b>laplataalerta24</b> 🫧 <b>ES OFICIAL.</b> A partir de hoy los trajes burbuja protectores son obligatorios para chicos y chicas en escuelas y espacios públicos. Las moscas ya no solo afectan al ganado: también ponen en riesgo a las personas. Revisá si el tuyo tiene filtro UV y control de humedad. Cuidemos a los más chicos. <span class="ht">#TrajeBurbuja #ApocalipsisFly #NosCuidamos #EmergenciaSanitaria #LaPlata</span>',cm:'<b>mama_de_estelita</b> ¿Dónde se consiguen? Hay lista de espera 😟<br><b>profe_lengua</b> Quedate en casa si no tenés el traje.'}};
+const dlg=document.getElementById('dlg');let cur=0,liked=false;
+const lk=document.getElementById('lk');
+function show(n){cur=n;liked=false;const p=P[n];
+pimg.innerHTML=p.img;cap.innerHTML=p.cap;cm.innerHTML=p.cm;lk.textContent='🤍';lk.classList.remove('liked');
+document.getElementById('lc')?.remove();
+const s=document.createElement('div');s.id='lc';s.style.cssText='padding:4px 12px;font-weight:600';s.textContent=p.likes.toLocaleString('es-AR')+' Me gusta';
+document.querySelector('.acts').after(s);dlg.showModal()}
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>show(b.dataset.p));
+lk.onclick=()=>{liked=!liked;lk.textContent=liked?'❤️':'🤍';const e=document.getElementById('lc');e.textContent=(P[cur].likes+(liked?1:0)).toLocaleString('es-AR')+' Me gusta'};
+document.getElementById('cl').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+const seg=document.getElementById('seg');seg.onclick=()=>{const f=seg.textContent==='Seguir';seg.textContent=f?'Siguiendo':'Seguir';seg.style.background=f?'#efefef':'#0095f6';seg.style.color=f?'#111':'#fff'};
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));
+document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t));
+if(location.hash!=='#'+b.dataset.t)try{history.replaceState(null,'','#'+b.dataset.t)}catch(e){}});
+const boxes=document.querySelectorAll('#chk input');
+boxes.forEach(c=>c.onchange=()=>{const n=[...boxes].filter(x=>x.checked).length;
+fill.style.width=n/8*100+'%';pct.textContent=n+' de 8 listo';done.hidden=n<8});
+(function(){
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+const L=document.getElementById('swarm'),N=matchMedia('(max-width:600px)').matches?10:20,F=[];let mx=-999,my=-999;
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY});
+for(let i=0;i<N;i++){const el=document.createElement('span');el.className='sf';el.textContent='\u{1FAB0}';el.style.fontSize=(14+Math.random()*16)+'px';L.appendChild(el);
+F.push({el,x:Math.random()*innerWidth,y:Math.random()*innerHeight,a:Math.random()*6.28,s:1+Math.random()*2.5,w:Math.random()*6})}
+function tick(){
+if(!document.hidden){const W=innerWidth,H=innerHeight;
+for(const f of F){f.a+=(Math.random()-.5)*.7;f.w+=.4;
+if(Math.random()<.02)f.s=Math.random()<.3?5+Math.random()*3:.8+Math.random()*2.5;
+const dx=f.x-mx,dy=f.y-my,d=Math.hypot(dx,dy);
+if(d<130){const t=Math.atan2(dy,dx);f.a+=Math.sin(t-f.a)*.5;f.x+=Math.cos(t)*4;f.y+=Math.sin(t)*4}
+f.x+=Math.cos(f.a)*f.s;f.y+=Math.sin(f.a)*f.s;
+if(f.x<-30)f.x=W+20;if(f.x>W+30)f.x=-20;if(f.y<-30)f.y=H+20;if(f.y>H+30)f.y=-20;
+f.el.style.transform='translate('+f.x.toFixed(1)+'px,'+f.y.toFixed(1)+'px) rotate('+(Math.sin(f.w)*25+Math.cos(f.a)*30).toFixed(0)+'deg)'}}
+requestAnimationFrame(tick)}
+tick()})();
+const h=location.hash.slice(1);if(h)document.querySelector('nav [data-t="'+h+'"]')?.click();
+</script>
+</body>
+</html>
